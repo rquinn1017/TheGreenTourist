@@ -1,15 +1,24 @@
 // Requiring necessary npm packages
-var express = require("express");
-var session = require("express-session");
+const dotenv = require("dotenv");
+dotenv.config();
+const express = require("express");
+const session = require("express-session");
 // Requiring passport as we've configured it
-var passport = require("./config/passport");
+const passport = require("./config/passport");
+
 
 // Setting up port and requiring models for syncing
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 var db = require("./models");
+// const db = require('db')
+// db.connect({
+//   host: process.env.DB_HOST,
+//   username: process.env.DB_USER,
+//   password: process.env.DB_PASS
+// });
 
 // Creating express app and configuring middleware needed for authentication
-var app = express();
+const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
