@@ -10,12 +10,7 @@ const passport = require("./config/passport");
 // Setting up port and requiring models for syncing
 const PORT = process.env.PORT || 8080;
 var db = require("./models");
-// const db = require('db')
-// db.connect({
-//   host: process.env.DB_HOST,
-//   username: process.env.DB_USER,
-//   password: process.env.DB_PASS
-// });
+
 
 // Creating express app and configuring middleware needed for authentication
 const app = express();
@@ -30,6 +25,31 @@ app.use(passport.session());
 // Requiring our routes
 require("./routes/html-routes.js")(app);
 require("./routes/api-routes.js")(app);
+
+
+var x = document.getElementById("demo");
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
+console.log(x.innerHTML); 
+
+
+
+
+
+
+
+
 
 // Syncing our database and logging a message to the user upon success
 db.sequelize.sync().then(function() {
