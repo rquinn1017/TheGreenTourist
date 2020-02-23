@@ -248,6 +248,12 @@
   padding: 5rem 0 0;
 }
 
+.table-container {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
 .contact-section .card {
   border: 0;
   border-bottom: 0.25rem solid #64a19d;
@@ -327,4 +333,8 @@ a:hover {
 
 footer {
   padding: 5rem 0;
+}
+
+#vaGreenTable {
+  color: whitesmoke;
 }

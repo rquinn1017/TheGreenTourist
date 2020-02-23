@@ -52,5 +52,11 @@ $.ajax({
     
 }).done(function(companies){
     console.log(companies);
+    $('#companies').DataTable({
+      companies: companies,
+      "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+      "pagingType": "full_numbers"
+     })
+     
 });
     
