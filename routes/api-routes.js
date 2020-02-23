@@ -46,4 +46,16 @@ module.exports = function(app) {
       });
     }
   });
+
+
+
+  app.get("/api/companies", function(req, res){
+    db.Place.findAll().then(function(companies){
+      // console.log(companies);
+      res.json(companies);
+    });
+    
+ });
 };
+
+  

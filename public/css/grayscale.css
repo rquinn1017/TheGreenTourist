@@ -5,7 +5,7 @@
  */
 
 #mainNav {
-  min-height: 56px;
+  min-height: 50px;
   background-color: #fff;
 }
 
@@ -124,6 +124,7 @@
 
 @media (min-width: 768px) {
   .masthead h1 {
+    padding-top: 105px;
     font-size: 4rem;
     line-height: 4rem;
   }
