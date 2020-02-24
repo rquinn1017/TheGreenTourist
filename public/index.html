@@ -79,8 +79,9 @@
 
           <br />
           <a href="#about" class="btn btn-primary js-scroll-trigger"
-            >View Virginia Green Members</a
-          >
+            >Virginia Green Members List</a>
+            <a href="#googleMap" class="btn btn-primary js-scroll-trigger"
+            >Virginia Green Members Map</a>
         </div>
       </div>
     </header>
@@ -96,11 +97,14 @@
           id="vaGreenTable">
           <thead>
             <tr>
-              <th data-field="Facility">Name</th>
-              <th data-field="Type">Type</th>
+              <th data-sortable="true" data-field="Facility">Name</th>
+              <th data-sortable="true" data-field="Type">Type</th>
               <th data-field="Address">Address</th>
-              <th data-field="City">City</th>
+              <th data-sortable="true" data-field="City">City</th>
               <th data-field="Website">Website</th>
+              <th data-field="id"data-class='hidden'>ID</th>
+              <th data-field="Latitude"data-class='hidden'>Latitude</th>
+              <th data-field="Longitude"data-class='hidden'>Longitude</th>
             </tr>
           </thead>
         </table>

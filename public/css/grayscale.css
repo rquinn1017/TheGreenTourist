@@ -297,6 +297,7 @@
 body {
   font-family: "Nunito";
   letter-spacing: 0.0625em;
+  color: #3c6360;
 }
 
 #login{
@@ -358,4 +359,14 @@ footer {
 #vaGreenTable tbody tr:hover {
   background-color: #64a19d;
   cursor: pointer;
+}
+  
+
+.hidden{
+  display:none;
+  visibility:hidden;
+}
+
+#companyHeder {
+color: #3c6360 !important;
 }
