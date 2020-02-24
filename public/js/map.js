@@ -61,8 +61,7 @@ $.ajax({
   url: "api/companies",
 
 }).done(function (companies) {
-  console.log(companies);
+  // console.log(companies);
 
-  $('#vaGreenTable').DataTable({})
 });
 
