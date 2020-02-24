@@ -8,8 +8,8 @@
 var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('googleMap'), {
-    center: { lat: 37.540760, lng: -77.933929 },
-    zoom: 8
+    center: { lat: 37.740760, lng: -78.633929 },
+    zoom: 8.25
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -27,7 +27,6 @@ function initMap() {
       //   infoWindow.setContent('You');
       //   infoWindow.open(map);
       map.setCenter(pos);
-      // var center = {lat: 37.540760, lng: -79.433929};
       var marker = new google.maps.Marker({ position: pos, map: map });
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
@@ -56,7 +55,3 @@ $.ajax({
   $('#vaGreenTable').DataTable({})
 });
 
-// $('#vaGreenTable').hover(function(){
-//   $(this).css("background-color", "yellow");
-  
-// });
