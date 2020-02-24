@@ -2,7 +2,7 @@ var map, infoWindow;
 function initMap() {
   map = new google.maps.Map(document.getElementById('googleMap'), {
     // center: { lat: 38, lng: -78.633929 },
-      zoom: 12
+    zoom: 12
   });
   infoWindow = new google.maps.InfoWindow;
 
@@ -16,9 +16,6 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-        // infoWindow.setPosition(pos);
-        // infoWindow.setContent('You');
-        // infoWindow.open(map);
       map.setCenter(pos);
 
       let marker = new google.maps.Marker({
@@ -43,14 +40,14 @@ function initMap() {
   $.ajax({
     method: "GET",
     url: "api/companies",
-  
+
   }).done(function (companies) {
     console.log(companies);
-  
+
     for (var i = 0; i < companies.length; i++) {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
-    
+
       console.log(i, lat, lng);
       var marker = new google.maps.Marker({
         map: map,
@@ -84,28 +81,28 @@ $.ajax({
 });
 
 $(document).ready(function () {
-$('table').on('click', 'tr' , function (event) {
-  // $(document).on('click', '.update', function() {
-    
+  $('table').on('click', 'tr', function (event) {
+    // $(document).on('click', '.update', function() {
+
 
     var $headerRow = $(this).closest('table').find('thead tr:first'),
-        $headerRowTds = $headerRow.find("th");
+      $headerRowTds = $headerRow.find("th");
 
     var $row = $(this).closest("tr"),
-        $tds = $row.find("td");
+      $tds = $row.find("td");
 
-    $headerRowTds.each(function(i) {
+    $headerRowTds.each(function (i) {
       // let header = $(this).text();
       let selectedLID = $tds.eq(5).text();
       let selectedLat = $tds.eq(6).text();
       let selectedLon = $tds.eq(7).text();
 
-  console.log(selectedLID, selectedLat, selectedLon)
-      
+      console.log(selectedLID, selectedLat, selectedLon)
+
 
     });
-    
-});
+
+  });
 
 
 });
