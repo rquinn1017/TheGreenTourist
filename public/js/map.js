@@ -23,11 +23,22 @@ function initMap() {
         lng: position.coords.longitude
       };
 
-      //   infoWindow.setPosition(pos);
-      //   infoWindow.setContent('You');
-      //   infoWindow.open(map);
+        // infoWindow.setPosition(pos);
+        // infoWindow.setContent('You');
+        // infoWindow.open(map);
       map.setCenter(pos);
-      var marker = new google.maps.Marker({ position: pos, map: map });
+
+      let marker = new google.maps.Marker({
+        map: map,
+        position: pos,
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        }
+      });
+      // var marker = new google.maps.Marker({ position: pos, map: map },
+      // );
+
+
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
