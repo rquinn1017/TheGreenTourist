@@ -15,15 +15,12 @@
     <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet" />
     
     <!-- Bootstrap Table -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+     --> -->
     
-
-
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css"
-    />
+    <link rel="stylesheet"href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css"/>
 
     <!-- Custom fonts for this template -->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
@@ -90,13 +87,13 @@
 
     <!-- About Section -->
     <section id="about" class="about-section text-center" >
-      <div class="table-container table-responsive" >
+      <div class="table table-container table-responsive" >
         <table
           data-toggle="table"
-      
           data-url="api/companies"
-          id="vaGreenTable"
-        >
+          data-pagination="true"
+          data-search="true"
+          id="vaGreenTable">
           <thead>
             <tr>
               <th data-field="Facility">Name</th>
@@ -234,8 +231,8 @@
 
      <!-- Bootstap Table -->
      <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
-     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+     <!-- <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script> -->
      
      
 
