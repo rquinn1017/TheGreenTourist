@@ -50,7 +50,7 @@ function initMap() {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
       infoWindows[i] = new google.maps.InfoWindow({
-        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<div>${companies[i].Website}</div>`
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` + `<a href= http://${companies[i].Website} target="_blank">Visit Website</a>`
       });
       console.log(i, lat, lng);
       markers[i] = new google.maps.Marker({
