@@ -43,19 +43,27 @@ function initMap() {
 
   }).done(function (companies) {
     console.log(companies);
-
-    for (var i = 0; i < companies.length; i++) {
+   let markers = [];
+   var infoWindows = [];
+   
+    for (let i = 0; i < companies.length; i++) {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
-
+      infoWindows[i] = new google.maps.InfoWindow({
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<div>${companies[i].Website}</div>`
+      });
       console.log(i, lat, lng);
-      var marker = new google.maps.Marker({
+      markers[i] = new google.maps.Marker({
         map: map,
         position: {
           lat: lat,
           lng: lng
         },
         title: companies[i].Facility
+      });
+      markers[i].addListener('click', function(){
+        console.log(infoWindows);
+        infoWindows[i].open(map, markers[i]);
       });
     };
   });
