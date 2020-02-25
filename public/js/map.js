@@ -46,11 +46,5 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.open(map);
 }
 
-// $.ajax({
-//     method: "GET",
-//     url: "api/companies",
-    
-// }).done(function(companies){
-//     console.log(companies);
-// });
+
     
