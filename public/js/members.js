@@ -4,4 +4,14 @@ $(document).ready(function() {
   $.get("/api/user_data").then(function(data) {
     $(".member-name").text(data.email);
   });
+
+  $.ajax({
+    method: "GET",
+    url: "api/companies",
+  
+  }).done(function (companies) {
+    console.log(companies);
+  
+  });
+
 });
