@@ -124,7 +124,7 @@
 
 @media (min-width: 768px) {
   .masthead h1 {
-    padding-top: 105px;
+    /* padding-top: 105px; */
     font-size: 4rem;
     line-height: 4rem;
   }
@@ -248,6 +248,12 @@
   padding: 5rem 0 0;
 }
 
+.table-container {
+  width: 80%;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
 .contact-section .card {
   border: 0;
   border-bottom: 0.25rem solid #64a19d;
@@ -291,6 +297,7 @@
 body {
   font-family: "Nunito";
   letter-spacing: 0.0625em;
+  color: #3c6360;
 }
 
 #login{
@@ -327,4 +334,39 @@ a:hover {
 
 footer {
   padding: 5rem 0;
+}
+
+#vaGreenTable {
+  color: whitesmoke;
+} 
+
+.table {
+  color: #64a19d;
+}
+
+.page-item.active .page-link {
+  background-color: #64a19d;
+    border-color: #64a19d;
+    color: #6c757d;
+    
+}
+
+.page-link {
+  background-color: #6c757d;
+  color: whitesmoke
+}
+
+#vaGreenTable tbody tr:hover {
+  background-color: #64a19d;
+  cursor: pointer;
+}
+  
+
+.hidden{
+  display:none;
+  visibility:hidden;
+}
+
+#companyHeder {
+color: #3c6360 !important;
 }
