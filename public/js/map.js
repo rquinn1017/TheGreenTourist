@@ -1,4 +1,5 @@
-var map, infoWindow;
+var map, infoWindow, pos;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('googleMap'), {
     // center: { lat: 38, lng: -78.633929 },
@@ -11,7 +12,7 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
+       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
@@ -50,7 +51,8 @@ function initMap() {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
       infoWindows[i] = new google.maps.InfoWindow({
-        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` + `<a href= http://${companies[i].Website} target="_blank">Visit Website</a>`
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` + `<a href= http://${companies[i].Website} target="_blank">Visit Website</a>` 
+        + `<br>` + `<a href=https://www.google.com/maps/dir/${pos.lat},${pos.lng}/Richmond,+VA/@${companies[i].Latitude},${companies[i].Longitude},9z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x89b111095799c9ed:0xbfd83e6de2423cc5!2m2!1d-77.4360481!2d37.5407246>Get Directions</a>`
       });
       console.log(i, lat, lng);
       markers[i] = new google.maps.Marker({
@@ -62,7 +64,7 @@ function initMap() {
         title: companies[i].Facility
       });
       markers[i].addListener('click', function(){
-        console.log(infoWindows);
+        // console.log(infoWindows);
         infoWindows[i].open(map, markers[i]);
       });
     };
