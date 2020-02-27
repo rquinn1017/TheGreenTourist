@@ -1,13 +1,13 @@
 var map, infoWindow, pos;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById('googleMap'), {
+  map = new google.maps.Map(document.getElementById("googleMap"), {
     // center: { lat: 38, lng: -78.633929 },
     zoom: 12
   });
-  infoWindow = new google.maps.InfoWindow;
+  infoWindow = new google.maps.InfoWindow();
 
-  // let locations = 
+  // let locations =
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -40,13 +40,12 @@ function initMap() {
   }
   $.ajax({
     method: "GET",
-    url: "api/companies",
-
-  }).done(function (companies) {
+    url: "api/companies"
+  }).done(function(companies) {
     console.log(companies);
-   let markers = [];
-   var infoWindows = [];
-   
+    let markers = [];
+    var infoWindows = [];
+
     for (let i = 0; i < companies.length; i++) {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
@@ -75,52 +74,46 @@ function initMap() {
         // console.log(infoWindows);
         infoWindows[i].open(map, markers[i]);
       });
-    };
+    }
   });
-
-
 }
 
 function handleLocationError(browserHasGeolocation, infoWindow, pos) {
   infoWindow.setPosition(pos);
-  infoWindow.setContent(browserHasGeolocation ?
-    'Error: The Geolocation service failed.' :
-    'Error: Your browser doesn\'t support geolocation.');
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
   infoWindow.open(map);
 }
 
 $.ajax({
   method: "GET",
-  url: "api/companies",
-
-}).done(function (companies) {
+  url: "api/companies"
+}).done(function(companies) {
   console.log(companies);
-
 });
 
-$(document).ready(function () {
-  $('table').on('click', 'tr', function (event) {
+$(document).ready(function() {
+  $("table").on("click", "tr", function(event) {
     // $(document).on('click', '.update', function() {
 
-
-    var $headerRow = $(this).closest('table').find('thead tr:first'),
+    var $headerRow = $(this)
+        .closest("table")
+        .find("thead tr:first"),
       $headerRowTds = $headerRow.find("th");
 
     var $row = $(this).closest("tr"),
       $tds = $row.find("td");
 
-    $headerRowTds.each(function (i) {
+    $headerRowTds.each(function(i) {
       // let header = $(this).text();
       let selectedLID = $tds.eq(5).text();
       let selectedLat = $tds.eq(6).text();
       let selectedLon = $tds.eq(7).text();
 
-      console.log(selectedLID, selectedLat, selectedLon)
-
-
+      console.log(selectedLID, selectedLat, selectedLon);
     });
-
   });
-
-
 });
