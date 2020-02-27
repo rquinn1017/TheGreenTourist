@@ -1,4 +1,5 @@
-var map, infoWindow;
+var map, infoWindow, pos;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById("googleMap"), {
     // center: { lat: 38, lng: -78.633929 },
@@ -10,30 +11,29 @@ function initMap() {
 
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-         pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        };
+    navigator.geolocation.getCurrentPosition(function (position) {
+       pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
 
-        map.setCenter(pos);
+      map.setCenter(pos);
 
-        let marker = new google.maps.Marker({
-          map: map,
-          position: pos,
-          title: "You are here",
-          icon: {
-            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-          }
-        });
-        // var marker = new google.maps.Marker({ position: pos, map: map },
-        // );
-      },
-      function() {
-        handleLocationError(true, infoWindow, map.getCenter());
-      }
-    );
+      let marker = new google.maps.Marker({
+        map: map,
+        position: pos,
+        title: "You are here",
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        }
+      });
+      // var marker = new google.maps.Marker({ position: pos, map: map },
+      // );
+
+
+    }, function () {
+      handleLocationError(true, infoWindow, map.getCenter());
+    });
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
@@ -49,15 +49,17 @@ function initMap() {
     for (let i = 0; i < companies.length; i++) {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
+      var webpage = companies[i].Website;
+      if (webpage.length>0){
+        if (webpage.substring(0, 4) !== "http"){
+          webpage = "https://" + webpage
+        }
+        webpage = `<a href="${webpage}" target="_blank">Visit Website</a>`
+      }
+      
       infoWindows[i] = new google.maps.InfoWindow({
-        content:
-          companies[i].Facility +
-          `<div>${companies[i].Contact}</div>` +
-          companies[i].Address +
-          `<br>` +
-          `<a href= http://${companies[i].Website} target="_blank">Visit Website</a>` +
-          `<br>` +
-          `<a href= https://www.google.com/maps/place/${companies.Address} target="_blank">Directions</a>`
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` +  webpage
+        + `<br>` + `<a href="https://www.google.com/maps/dir/${pos.lat},${pos.lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
       });
       console.log(i, lat, lng);
       markers[i] = new google.maps.Marker({
@@ -68,8 +70,8 @@ function initMap() {
         },
         title: companies[i].Facility
       });
-      markers[i].addListener("click", function() {
-        console.log(infoWindows);
+      markers[i].addListener('click', function(){
+        // console.log(infoWindows);
         infoWindows[i].open(map, markers[i]);
       });
     }
