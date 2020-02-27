@@ -97,8 +97,6 @@ $.ajax({
 
 $(document).ready(function() {
   $("table").on("click", "tr", function(event) {
-    // $(document).on('click', '.update', function() {
-
     var $headerRow = $(this)
         .closest("table")
         .find("thead tr:first"),
