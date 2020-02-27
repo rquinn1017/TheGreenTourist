@@ -1,4 +1,5 @@
-var map, infoWindow;
+var map, infoWindow, pos;
+
 function initMap() {
   map = new google.maps.Map(document.getElementById('googleMap'), {
     // center: { lat: 38, lng: -78.633929 },
@@ -11,7 +12,7 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
+       pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
@@ -49,8 +50,17 @@ function initMap() {
     for (let i = 0; i < companies.length; i++) {
       var lat = companies[i].Latitude;
       var lng = companies[i].Longitude;
+      var webpage = companies[i].Website;
+      if (webpage.length>0){
+        if (webpage.substring(0, 4) !== "http"){
+          webpage = "https://" + webpage
+        }
+        webpage = `<a href="${webpage}" target="_blank">Visit Website</a>`
+      }
+      
       infoWindows[i] = new google.maps.InfoWindow({
-        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` + `<a href= http://${companies[i].Website} target="_blank">Visit Website</a>`
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>`  + companies[i].Address + `<br>` +  webpage
+        + `<br>` + `<a href="https://www.google.com/maps/dir/${pos.lat},${pos.lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
       });
       console.log(i, lat, lng);
       markers[i] = new google.maps.Marker({
@@ -62,7 +72,7 @@ function initMap() {
         title: companies[i].Facility
       });
       markers[i].addListener('click', function(){
-        console.log(infoWindows);
+        // console.log(infoWindows);
         infoWindows[i].open(map, markers[i]);
       });
     };
