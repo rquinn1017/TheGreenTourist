@@ -1,8 +1,8 @@
-var map, infoWindow, pos;
+let map, infoWindow, pos;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("googleMap"), {
-    // center: { lat: 38, lng: -78.633929 },
+    center: { lat: 37.5407, lng: -77.4360 },
     zoom: 12
   });
   infoWindow = new google.maps.InfoWindow();
@@ -27,16 +27,13 @@ function initMap() {
           url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         }
       });
-      // var marker = new google.maps.Marker({ position: pos, map: map },
-      // );
-
 
     }, function () {
       handleLocationError(true, infoWindow, map.getCenter());
     });
   } else {
     // Browser doesn't support Geolocation
-    handleLocationError(false, infoWindow, map.getCenter());
+    handleLocationError(false, infoWindow, map.getCenter(center));
   }
   $.ajax({
     method: "GET",
@@ -44,12 +41,12 @@ function initMap() {
   }).done(function (companies) {
 
     let markers = [];
-    var infoWindows = [];
+    let infoWindows = [];
 
     for (let i = 0; i < companies.length; i++) {
-      var lat = companies[i].Latitude;
-      var lng = companies[i].Longitude;
-      var webpage = companies[i].Website;
+      let lat = companies[i].Latitude;
+      let lng = companies[i].Longitude;
+      let webpage = companies[i].Website;
       if (webpage.length > 0) {
         if (webpage.substring(0, 4) !== "http") {
           webpage = "https://" + webpage
@@ -97,12 +94,12 @@ $.ajax({
 
 $(document).ready(function () {
   $("table").on("click", "tr", function (event) {
-    var $headerRow = $(this)
+    let $headerRow = $(this)
       .closest("table")
       .find("thead tr:first"),
       $headerRowTds = $headerRow.find("th");
 
-    var $row = $(this).closest("tr"),
+    let $row = $(this).closest("tr"),
       $tds = $row.find("td");
 
     $headerRowTds.each(function (i) {
