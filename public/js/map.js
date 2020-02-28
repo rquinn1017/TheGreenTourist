@@ -1,4 +1,4 @@
-var map, infoWindow;
+var map, infoWindow, pos;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("googleMap"), {
@@ -12,11 +12,11 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
-    let pos = {
+      pos = {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
-
+      
       map.setCenter(pos);
 
       let marker = new google.maps.Marker({
@@ -66,7 +66,7 @@ function initMap() {
       
       infoWindows[i] = new google.maps.InfoWindow({
         content: companies[i].Facility + `<div>${companies[i].Contact}</div>` + companies[i].Address + `<br>` + webpage
-          + `<br>` + `<a href="https://www.google.com/maps/dir/${pos.lat},${pos.lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
+          + `<br>` + `<a href="https://www.google.com/maps/dir/${lat},${lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
       });
 
 
@@ -93,23 +93,4 @@ $.ajax({
   url: "api/companies"
 }).done(function (companies) {
 
-});
-
-$(document).ready(function () {
-  $("table").on("click", "tr", function (event) {
-    let $headerRow = $(this)
-      .closest("table")
-      .find("thead tr:first"),
-      $headerRowTds = $headerRow.find("th");
-
-    let $row = $(this).closest("tr"),
-      $tds = $row.find("td");
-
-    $headerRowTds.each(function (i) {
-      // let header = $(this).text();
-      let selectedLID = $tds.eq(5).text();
-      let selectedLat = $tds.eq(6).text();
-      let selectedLon = $tds.eq(7).text();
-    });
-  });
 });
