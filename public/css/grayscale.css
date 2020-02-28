@@ -187,8 +187,8 @@
   margin-bottom: 5rem;
 }
 
-.projects-section {
-  padding: 10rem 0;
+#projects {
+  margin-bottom: 0px;
 }
 
 .projects-section .featured-text {
@@ -252,6 +252,7 @@
   width: 80%;
   margin-right: 10%;
   margin-left: 10%;
+  margin-bottom: 0px;
 }
 
 .contact-section .card {
@@ -369,4 +370,21 @@ footer {
 
 #companyHeder {
 color: #3c6360 !important;
+}
+
+.scrollButton {
+  margin-bottom: 20px;
+}
+
+
+@media only screen and (max-device-width: 1024px) {
+  .table {
+      font-size: 8px;
+  }
+}
+
+@media only screen and (max-device-width: 730px) {
+  .table {
+      font-size: 6px;
+  }
 }
