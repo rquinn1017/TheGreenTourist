@@ -1,4 +1,4 @@
-let map, infoWindow, pos;
+const map, infoWindow, pos;
 
 function initMap() {
   map = new google.maps.Map(document.getElementById("googleMap"), {
