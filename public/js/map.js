@@ -66,7 +66,7 @@ function initMap() {
       
       infoWindows[i] = new google.maps.InfoWindow({
         content: companies[i].Facility + `<div>${companies[i].Contact}</div>` + companies[i].Address + `<br>` + webpage
-          + `<br>` + `<a href="https://www.google.com/maps/dir/My+Location/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
+          + `<br>` + `<a href="https://www.google.com/maps/dir/${pos}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
       });
 
 
