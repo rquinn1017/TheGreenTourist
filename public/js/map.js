@@ -24,7 +24,7 @@ function initMap() {
         position: pos,
         title: "You are here",
         icon: {
-          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+          url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         }
       });
 
@@ -54,11 +54,6 @@ function initMap() {
         webpage = `<a href="${webpage}" target="_blank">Visit Website</a>`
       }
 
-      infoWindows[i] = new google.maps.InfoWindow({
-        content: companies[i].Facility + `<div>${companies[i].Contact}</div>` + companies[i].Address + `<br>` + webpage
-          + `<br>` + `<a href="https://www.google.com/maps/dir/${pos.lat},${pos.lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
-      });
-
       markers[i] = new google.maps.Marker({
         map: map,
         position: {
@@ -67,6 +62,14 @@ function initMap() {
         },
         title: companies[i].Facility
       });
+
+      
+      infoWindows[i] = new google.maps.InfoWindow({
+        content: companies[i].Facility + `<div>${companies[i].Contact}</div>` + companies[i].Address + `<br>` + webpage
+          + `<br>` + `<a href="https://www.google.com/maps/dir/${pos.lat},${pos.lng}/${companies[i].Latitude},${companies[i].Longitude}" target="_blank">Get Directions</a>`
+      });
+
+
       markers[i].addListener('click', function () {
 
         infoWindows[i].open(map, markers[i]);
