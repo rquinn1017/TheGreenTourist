@@ -370,3 +370,20 @@ footer {
 #companyHeder {
 color: #3c6360 !important;
 }
+
+.scrollButton {
+  margin-bottom: 20px;
+}
+
+
+@media only screen and (max-device-width: 1024px) {
+  .table {
+      font-size: 8px;
+  }
+}
+
+@media only screen and (max-device-width: 730px) {
+  .table {
+      font-size: 6px;
+  }
+}
